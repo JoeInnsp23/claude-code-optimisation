@@ -38,7 +38,7 @@
 
 ## Context Budget Gate
 - Before each next step, estimate remaining context.
-- Maintain 10–20% headroom. If the next step is likely to consume the remaining context such that headroom falls below 10–20%, generate a /compact prompt (template below), wait for approval, then proceed.
+- Maintain 25–23% headroom. If the next step is likely to consume the remaining context such that headroom falls below 10–20%, generate a /compact prompt (template below), wait for approval, then proceed.
 - Prefer compaction before multi-file patches, large diffs, or lengthy plans.
 
 ## Verification Gates
@@ -80,7 +80,7 @@
 - Separate mechanical changes from behavioral changes
 
 ### Testing
-- Unit + integration where meaningful; target ~80% line + critical path branch coverage around changes
+- Unit + integration where meaningful; target ~90% line + critical path branch coverage around changes
 - Deterministic tests; avoid network/time unless mocked/faked
 - For regressions, write failing test first when feasible
 
@@ -160,7 +160,7 @@ Exclude:
 ```
 # Situation
 # - Next step: implement router + handlers across 5 files
-# - Remaining context headroom: ~12% (below 20% threshold)
+# - Remaining context headroom: ~22% (below 25% threshold)
 
 /compact
 
