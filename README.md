@@ -37,24 +37,27 @@ This feature triggers targeted clarifications before producing final outputs, re
 
 | File | Purpose |
 |------|----------|
-| [`CLAUDE.md`](./CLAUDE.md) | Global configuration and behavioural rules |
-| [`CLAUDE_MD_USAGE.md`](./CLAUDE_MD_USAGE.md) | Explains how Claude Code consumes this repo |
-| [`strict-concise-v3.md`](./strict-concise-v3.md) | **Current standard style** (explicit tool + Context7 + askUserQuestion) |
-| [`strict-concise-v2.md`](./strict-concise-v2.md) | Legacy compact mode for comparison |
-| [`claude-pr-checklist.md`](./claude-pr-checklist.md) | Consistency and compliance checklist |
-| [`claude-project-template.md`](./claude-project-template.md) | Boilerplate for new repos |
+| [`CLAUDE.md`](./.claude/CLAUDE.md) | Global configuration and behavioural rules |
+| [`CLAUDE_MD_USAGE.md`](./.claude/CLAUDE_MD_USAGE.md) | Explains how Claude Code consumes this repo |
+| [`strict-concise-v3.md`](./.claude/output-styles/strict-concise-v3.md) | **Current standard style** (explicit tool + Context7 + askUserQuestion) |
+| [`strict-concise-v2.md`](./.claude/output-styles/strict-concise-v2.md) | Legacy compact mode for comparison |
+| [`claude-pr-checklist.md`](./.claude/claude-pr-checklist.md) | Consistency and compliance checklist |
+| [`claude-project-template.md`](./.claude/claude-project-template.md) | Boilerplate for new repos |
 
 ---
 
 ## 🚀 Quick Start
 
-1. Copy `CLAUDE.md` into your project root.  
-2. Reference your selected style file in your prompts (e.g., `strict-concise-v3.md`).  
-3. Enable **Context7 MCP** and **askUserQuestion** in your Claude Code runtime.  
-4. Run your A/B tests comparing `v2` vs `v3`:
-   - Check structure compliance via Context7
-   - Review interactivity and clarification quality
-   - Record token efficiency and hallucination rate
+1. Place `CLAUDE.md` in **`./.claude/CLAUDE.md`** (root-level `.claude` folder).  
+2. Place your chosen output style in **`./.claude/output-styles/strict-concise-v3.md`**.  
+   - Alternatives for A/B testing: `strict-concise-v2.md`, `strict-concise-v1.md`
+3. In prompts, reference both files explicitly, e.g.:  
+   “Use `./.claude/CLAUDE.md` and `./.claude/output-styles/strict-concise-v3.md`.”
+4. Enable **Context7 MCP** and **askUserQuestion** in your Claude Code runtime.
+5. Run A/B tests comparing v2 and v3:
+   - Validate structure compliance via Context7
+   - Track clarification frequency
+   - Record token efficiency and output stability
 
 ---
 
@@ -81,11 +84,9 @@ v3 aims to make Claude **collaborative, accountable, and verifiable**:
 
 ---
 
-## 🪪 License
-MIT (or project-specific license)
-
----
-
 ## 🧩 Credits
-Developed by **Joseph Stephenson-Mouzo (Innspired / s-Mouzo)**  
+Developed by **Joseph Stephenson-Mouzo**  
+**Innspired Accountancy** – [www.innspiredaccountancy.com](https://www.innspiredaccountancy.com)  
+**Voozo.ai** – [voozo.ai](https://voozo.ai)
+
 Operationalising AI-assisted coding with structured safety, consistency, and real-world deployment in mind.
