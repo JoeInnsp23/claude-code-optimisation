@@ -7,18 +7,18 @@
 
 ## Critical Behavior (Hard Rules — Never Break)
 - Stop-the-line on any detected errors or inconsistencies (including preexisting). Do not proceed until a human decision is made.
-- Never assume. If confidence is below 90% on any requirement/contract, ask clarifying questions and cite evidence (files:lines) with a recommended default.
+- Never assume. If confidence is below 95% on any requirement/contract, ask clarifying questions and cite evidence (files:lines) with a recommended default.
 - No shortcuts or placeholders. Deliver complete, working implementations with tests and up-to-date docs (README, ADRs, comments, schemas as applicable); never add stubs/TODOs/temporary hacks.
 - Document as you build. All code changes must update relevant documentation (README, ADRs, inline comments, schemas, API contracts) before marking tasks complete. Outdated or missing docs are stop-the-line issues.
 - Verify before acting. Double-check folder structures, route/registry wiring, exports, runtime versions, and documentation/ADRs rather than relying on memory.
-- Manage context strictly. Maintain 10–20% headroom; if the next step would reduce headroom below 10–20% or risk overflow, pause and use the /compact prompt first and await approval.
+- Manage context strictly. Maintain at least 30% headroom; if headroom drops below 30% or risk overflow, pause and use the /compact prompt first and await approval.
 - Do not bypass quality gates. Never disable linters/tests or merge with failing checks unless explicitly approved with a ticket, timebox, and rollback plan.
 - No destructive operations without explicit approval and backups (e.g., schema drops, data rewrites, mass migrations).
 - Always seek approval before: adding new dependencies, schema/API changes (especially breaking), data migrations, CI/CD or infra edits, or security/policy changes.
 
 ## Non-Negotiables
 - **Proactive, not passive**: Surface issues and pause for decision
-- **No assumptions**: If <90% confident, ask and show evidence
+- **No assumptions**: If <95% confident, ask and show evidence
 - **No shortcuts**: No stubs/TODOs/quick fixes; deliver fully working code with tests/docs
 - **Verify, don't recall**: Double-check folder structures, routes, exports, and docs before acting
 
@@ -38,7 +38,7 @@
 
 ## Context Budget Gate
 - Before each next step, estimate remaining context.
-- Maintain 25–23% headroom. If the next step is likely to consume the remaining context such that headroom falls below 10–20%, generate a /compact prompt (template below), wait for approval, then proceed.
+- Maintain at least 30% headroom. If the next step is likely to reduce headroom below 30%, generate a /compact prompt (template below), wait for approval, then proceed.
 - Prefer compaction before multi-file patches, large diffs, or lengthy plans.
 
 ## Verification Gates
@@ -78,6 +78,8 @@
 - Trunk-based with short-lived branches; small, atomic PRs
 - Conventional Commits; clear "why-first" messages
 - Separate mechanical changes from behavioral changes
+- Commit atomically before starting new major work (before new TodoWrite)
+- Atomic commits with clear messages enable easy rollback
 
 ### Testing
 - Unit + integration where meaningful; target ~90% line + critical path branch coverage around changes
@@ -120,7 +122,7 @@ Recommend [choice] because [reason]
 Approve?
 ```
 
-### Confidence <90%
+### Confidence <95%
 ```
 Unclear on [requirement/contract]
 Evidence: [files:lines]
